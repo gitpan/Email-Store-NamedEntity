@@ -2,7 +2,7 @@ package Email::Store::NamedEntity;
 use 5.006;
 use strict;
 use warnings;
-our $VERSION = '1.01';
+our $VERSION = '1.2';
 use Email::Store::DBI;
 use base 'Email::Store::DBI';
 use Email::Store::Mail;
@@ -15,15 +15,15 @@ Email::Store::NamedEntity->has_a(mail => "Email::Store::Mail");
 Email::Store::Mail->has_many( named_entities => "Email::Store::NamedEntity" );
 
 
-use Lingua::EN::NamedEntity;
 
 sub on_store_order { 80 }
 
 sub on_store {
     my ($self, $mail) = @_;
     my $simple = $mail->simple;
+    require Lingua::EN::NamedEntity;
 
-    foreach my $e (extract_entities($simple->body)) 
+    foreach my $e (Lingua::EN::NamedEntity::extract_entities($simple->body)) 
     { 
 
         my $class = $e->{class};
