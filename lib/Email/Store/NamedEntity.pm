@@ -2,7 +2,7 @@ package Email::Store::NamedEntity;
 use 5.006;
 use strict;
 use warnings;
-our $VERSION = '1.0';
+our $VERSION = '1.01';
 use Email::Store::DBI;
 use base 'Email::Store::DBI';
 use Email::Store::Mail;
@@ -45,7 +45,7 @@ sub on_gather_plucene_fields {
 
     my %topics;
     foreach my $e ($mail->named_entities) {
-        push @{$topic{lc($e->description)}, lc($e->thing);
+        push @{$topics{lc($e->description)}, lc($e->thing);
     }
 
     foreach my $key (keys %topics) {
