@@ -4,7 +4,7 @@ use ExtUtils::MakeMaker;
 WriteMakefile
   (
    NAME        => 'Email::Store::NamedEntity',
-   VERSION     => '1.2',
+   VERSION     => '1.3',
    PL_FILES    => {},
    INSTALLDIRS => 'site',
    PREREQ_PM   => {
